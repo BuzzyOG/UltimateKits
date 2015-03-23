@@ -91,5 +91,6 @@ public class KitMenu implements Listener {
 
 		kit.giveKit(player);
 		player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
+		player.closeInventory();
 	}
 }
