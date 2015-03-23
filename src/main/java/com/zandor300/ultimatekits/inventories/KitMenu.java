@@ -7,9 +7,11 @@ import com.zandor300.zsutilities.inventorysystem.Item;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.scheduler.BukkitTask;
 
@@ -55,5 +57,27 @@ public class KitMenu implements Listener {
 			task.cancel();
 			playerTask.remove(event.getPlayer().getName());
 		}
+	}
+
+	@EventHandler
+	public void onInventoryClick(InventoryClickEvent event) {
+		if (!event.getInventory().getName().equalsIgnoreCase(ChatColor.DARK_PURPLE + "UltimateKits"))
+			return;
+		event.setCancelled(true);
+
+		Player player = (Player) event.getWhoClicked();
+		String name = event.getCurrentItem().getItemMeta().getDisplayName().replaceAll(ChatColor.RED + "", "")
+				.replaceAll(ChatColor.GREEN + "", "");
+		Kit kit = Kit.getKit(name);
+		if(kit == null)
+			return;
+
+		if(kit.getPlayerCooldown().containsKey(player.getName())) {
+			player.playSound(player.getLocation(), Sound.NOTE_BASS, 1, 1);
+			return;
+		}
+
+		kit.giveKit(player);
+		player.playSound(player.getLocation(), Sound.ORB_PICKUP, 1, 1);
 	}
 }
