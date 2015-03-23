@@ -56,8 +56,8 @@ public class UltimateKits extends JavaPlugin {
 			String name = kit;
 			HashMap<Material, Integer> items = new HashMap<Material, Integer>();
 			for(String item : this.getConfig().getConfigurationSection("kits." + kit + ".items").getKeys(false)) {
-				String[] item1 = item.split(":");
-				items.put(Material.getMaterial(Integer.valueOf(item1[0])), Integer.valueOf(item1[1]));
+				items.put(Material.getMaterial(Integer.valueOf(item)),
+						Integer.valueOf(this.getConfig().getInt("kits." + kit + ".items." + item)));
 			}
 			Material helmet = Material.getMaterial(this.getConfig().getInt("kits." + kit + ".helmet"));
 			Material chestplate = Material.getMaterial(this.getConfig().getInt("kits." + kit + ".chestplate"));
