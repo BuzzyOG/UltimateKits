@@ -1,7 +1,10 @@
 package com.zandor300.ultimatekits;
 
+import com.zandor300.ultimatekits.commands.KitCommand;
+import com.zandor300.ultimatekits.commands.UltimateKitsCommand;
 import com.zandor300.ultimatekits.enums.Kit;
 import com.zandor300.ultimatekits.inventories.KitMenu;
+import com.zandor300.zsutilities.commandsystem.CommandManager;
 import com.zandor300.zsutilities.utilities.Chat;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
@@ -61,6 +64,12 @@ public class UltimateKits extends JavaPlugin {
 			}
 		}, 20l, 20l);
 		chat.sendConsoleMessage("Started timers.");
+
+		chat.sendConsoleMessage("Registering commands...");
+		CommandManager cm = new CommandManager();
+		cm.registerCommand(new KitCommand(), this);
+		cm.registerCommand(new UltimateKitsCommand(), this);
+		chat.sendConsoleMessage("Registered commands.");
 
 		chat.sendConsoleMessage("Everything is setup!");
 		chat.sendConsoleMessage("Enabled.");
