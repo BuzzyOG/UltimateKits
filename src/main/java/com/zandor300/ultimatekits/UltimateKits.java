@@ -55,7 +55,7 @@ public class UltimateKits extends JavaPlugin {
 		for(String kit : this.getConfig().getConfigurationSection("kits").getKeys(false)) {
 			String name = kit;
 			HashMap<Material, Integer> items = new HashMap<Material, Integer>();
-			for(String item : this.getConfig().getConfigurationSection("kits." + kit + ".items").getKeys(true)) {
+			for(String item : this.getConfig().getConfigurationSection("kits." + kit + ".items").getKeys(false)) {
 				String[] item1 = item.split(":");
 				items.put(Material.getMaterial(Integer.valueOf(item1[0])), Integer.valueOf(item1[1]));
 			}
