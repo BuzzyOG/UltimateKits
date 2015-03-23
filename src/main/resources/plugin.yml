@@ -1,0 +1,5 @@
+name: UltimateKits
+main: com.zandor300.ultimatekits.UltimateKits
+version: 1.0.0
+author: Zandor300
+depend: [ZSUtilities]
