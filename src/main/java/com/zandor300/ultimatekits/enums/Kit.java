@@ -64,8 +64,10 @@ public class Kit {
 
 	public void giveKit(Player player) {
 		playerCooldown.put(player.getName(), cooldown);
-
 		PlayerInventory inventory = player.getInventory();
+
+		inventory.clear();
+
 		int i = 0;
 		for (Map.Entry<Material, Integer> entry : items.entrySet()) {
 			for (int a = 0; a < entry.getValue(); a++)
