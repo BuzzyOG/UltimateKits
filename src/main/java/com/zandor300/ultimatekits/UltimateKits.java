@@ -5,6 +5,7 @@ import com.zandor300.ultimatekits.commands.UltimateKitsCommand;
 import com.zandor300.ultimatekits.enums.ArmorSet;
 import com.zandor300.ultimatekits.enums.Kit;
 import com.zandor300.ultimatekits.inventories.KitMenu;
+import com.zandor300.zsutilities.ZSUtilities;
 import com.zandor300.zsutilities.commandsystem.CommandManager;
 import com.zandor300.zsutilities.utilities.Chat;
 import org.bukkit.Bukkit;
@@ -42,6 +43,8 @@ public class UltimateKits extends JavaPlugin {
 		saveDefaultConfig();
 		this.getConfig().options().copyDefaults(true);
 		PluginManager pm = Bukkit.getPluginManager();
+
+		ZSUtilities.addDependency(this);
 
 		chat.sendConsoleMessage("Starting metrics...");
 		try {
